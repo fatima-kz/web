@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Cookie</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>    /* Floating pink hearts animation - Fast and smooth */
+    .floating-heart {
+      position: fixed;
+      font-size: 2rem;
+      color: #ff6bb3;
+      opacity: 0;
+      animation: floatAndFade 4s infinite linear;
+      pointer-events: none;
+      z-index: -1;
+      will-change: transform, opacity;
+    }
+
+    .floating-heart:nth-child(1) {
+      left: 15%;
+      animation-delay: 0s;
+      animation-duration: 4s;
+    }
+
+    .floating-heart:nth-child(2) {
+      left: 30%;
+      animation-delay: 0.8s;
+      animation-duration: 4.2s;
+    }
+
+    .floating-heart:nth-child(3) {
+      left: 50%;
+      animation-delay: 1.6s;
+      animation-duration: 4.4s;
+    }
+
+    .floating-heart:nth-child(4) {
+      left: 70%;
+      animation-delay: 2.4s;
+      animation-duration: 4.6s;
+    }
+
+    .floating-heart:nth-child(5) {
+      left: 85%;
+      animation-delay: 3.2s;
+      animation-duration: 4.8s;
+    }
+
+    @keyframes floatAndFade {
+      0% {
+        transform: translateY(110vh) rotate(0deg) scale(0.8);
+        opacity: 0;
+      }
+      5% {
+        opacity: 0.9;
+      }
+      95% {
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(-20vh) rotate(180deg) scale(1.2);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav>
+        <a href="/home">Home</a>
+        <a href="/cookie1">Cookie Info</a>
+        <a href="/add-cookie" class="active">Add Cookie</a>
+        <a href="/remove-cookie">Remove Cookie</a>
+        <a href="/remove-cookie-ajax">AJAX Remove</a>
+        <a href="/show-cookies">Show Cookies</a>
+      </nav>
+    </header>
+
+    <div class="card">
+      <h1>Create a Widdle Cookie... Just for You 🍪</h1>
+      
+      <div class="form-container">
+        <form method="POST" action="/add-cookie">
+          <div class="form-group">
+            <label for="cookieName">Cookie Name</label>
+            <input type="text" id="cookieName" name="cookieName" required placeholder="Enter cookie name..." />
+          </div>
+
+          <div class="form-group">
+            <label for="cookieValue">Cookie Value</label>
+            <input type="text" id="cookieValue" name="cookieValue" required placeholder="Enter cookie value..." />
+          </div>
+
+          <button type="submit" class="btn">Create Cookie</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Floating hearts elements -->
+    <div class="floating-heart">❤️</div>
+    <div class="floating-heart">💖</div>
+    <div class="floating-heart">💕</div>
+    <div class="floating-heart">💘</div>
+    <div class="floating-heart">💝</div>
+  </div>
+</body>
+</html>

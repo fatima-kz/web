@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJAX Cookie Remover🎀</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>    /* Floating broken hearts animation - Fast and smooth */
+    .floating-heart {
+      position: fixed;
+      font-size: 2rem;
+      color: #ff6b9d;
+      opacity: 0;
+      animation: floatAndFade 4s infinite linear;
+      pointer-events: none;
+      z-index: -1;
+      will-change: transform, opacity;
+    }
+
+    .floating-heart:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+      animation-duration: 4s;
+    }
+
+    .floating-heart:nth-child(2) {
+      left: 25%;
+      animation-delay: 0.7s;
+      animation-duration: 4.3s;
+    }
+
+    .floating-heart:nth-child(3) {
+      left: 50%;
+      animation-delay: 1.4s;
+      animation-duration: 4.1s;
+    }
+
+    .floating-heart:nth-child(4) {
+      left: 75%;
+      animation-delay: 2.1s;
+      animation-duration: 4.4s;
+    }
+
+    .floating-heart:nth-child(5) {
+      left: 40%;
+      animation-delay: 2.8s;
+      animation-duration: 4.2s;
+    }
+
+    .floating-heart:nth-child(6) {
+      left: 90%;
+      animation-delay: 3.5s;
+      animation-duration: 4.5s;
+    }    @keyframes floatAndFade {
+      0% {
+        transform: translateY(110vh) rotate(0deg) scale(0.8);
+        opacity: 0;
+      }
+      5% {
+        opacity: 0.8;
+      }
+      95% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-20vh) rotate(-180deg) scale(1.1);
+        opacity: 0;
+      }
+    }
+  </style>
+  <script>
+    function deleteCookieAjax(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("cookieName").value;
+      const resultDiv = document.getElementById("result");
+
+      fetch("/remove-cookie-ajax", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "cookieName=" + encodeURIComponent(name)
+      })
+      .then(res => res.json())      .then(data => {
+        resultDiv.innerText = data.message;
+        resultDiv.style.background = data.success ? 
+          "linear-gradient(135deg, #ff85c2, #ffb3d9)" : 
+          "linear-gradient(135deg, #ff6b9d, #ff85b3)";
+        resultDiv.style.color = "white";
+        resultDiv.style.borderRadius = "20px";
+        resultDiv.style.padding = "20px 25px";
+        resultDiv.style.fontWeight = "700";
+      })
+      .catch(err => {
+        resultDiv.innerText = "Something went wrong.";
+        resultDiv.style.background = "linear-gradient(135deg, #f56565, #e53e3e)";
+        resultDiv.style.color = "white";
+        resultDiv.style.borderRadius = "12px";
+        resultDiv.style.padding = "15px 20px";
+        resultDiv.style.fontWeight = "600";
+      });
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav>
+        <a href="/home">Home</a>
+        <a href="/cookie1">Cookie Info</a>
+        <a href="/add-cookie">Add Cookie</a>
+        <a href="/remove-cookie">Remove Cookie</a>
+        <a href="/remove-cookie-ajax" class="active">AJAX Remove</a>
+        <a href="/show-cookies">Show Cookies</a>
+      </nav>
+    </header>
+
+    <div class="card">
+      <h1>Say Goodbye to your Cookie with AJAX</h1>
+      
+      <div class="form-container">
+        <form onsubmit="deleteCookieAjax(event)">
+          <div class="form-group">
+            <label for="cookieName">Cookie Name to Remove</label>
+            <input type="text" id="cookieName" name="cookieName" required placeholder="Enter cookie name to delete..." />
+          </div>
+
+          <button type="submit" class="btn">Delete Cookie (AJAX)</button>
+        </form>
+
+        <div id="result"></div>
+      </div>
+    </div>
+
+    <!-- Floating broken hearts elements -->
+    <div class="floating-heart">💔</div>
+    <div class="floating-heart">💔</div>
+    <div class="floating-heart">💔</div>
+    <div class="floating-heart">💔</div>
+    <div class="floating-heart">💔</div>
+    <div class="floating-heart">💔</div>
+  </div>
+</body>
+</html>

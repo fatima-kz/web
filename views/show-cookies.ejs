@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show All Cookies</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav>
+        <a href="/home">Home</a>
+        <a href="/cookie1">Cookie Info</a>
+        <a href="/add-cookie">Add Cookie</a>
+        <a href="/remove-cookie">Remove Cookie</a>
+        <a href="/remove-cookie-ajax">AJAX Remove</a>
+        <a href="/show-cookies" class="active">Show Cookies</a>
+      </nav>
+    </header>
+
+    <div class="card">
+      <h1>All Cookies from Your Browser🎀</h1>
+
+      <% if (Object.keys(cookies).length === 0) { %>
+        <div class="empty-state">
+          <div class="emoji">🍪</div>
+          <h3>No cookies found</h3>
+          <p>Add a cookie to become a pookie</p>
+        </div>
+      <% } else { %>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Cookie Name</th>
+                <th>Cookie Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (let key in cookies) { %>
+                <tr>
+                  <td><%= key %></td>
+                  <td><%= cookies[key] %></td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remove Cookie</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>    /* Floating broken hearts animation - Fast and smooth */
+    .floating-heart {
+      position: fixed;
+      font-size: 2rem;
+      color: #ff6b9d;
+      opacity: 0;
+      animation: floatAndFade 4s infinite linear;
+      pointer-events: none;
+      z-index: -1;
+      will-change: transform, opacity;
+    }
+
+    .floating-heart:nth-child(1) {
+      left: 20%;
+      animation-delay: 0s;
+      animation-duration: 4s;
+    }
+
+    .floating-heart:nth-child(2) {
+      left: 80%;
+      animation-delay: 1s;
+      animation-duration: 4.5s;
+    }
+
+    .floating-heart:nth-child(3) {
+      left: 45%;
+      animation-delay: 2s;
+      animation-duration: 4.2s;
+    }
+
+    .floating-heart:nth-child(4) {
+      left: 65%;
+      animation-delay: 3s;
+      animation-duration: 4.3s;
+    }
+
+    @keyframes floatAndFade {
+      0% {
+        transform: translateY(110vh) rotate(0deg) scale(0.8);
+        opacity: 0;
+      }
+      5% {
+        opacity: 0.8;
+      }
+      95% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-20vh) rotate(-180deg) scale(1.1);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav>
+        <a href="/home">Home</a>
+        <a href="/cookie1">Cookie Info</a>
+        <a href="/add-cookie">Add Cookie</a>
+        <a href="/remove-cookie" class="active">Remove Cookie</a>
+        <a href="/remove-cookie-ajax">AJAX Remove</a>
+        <a href="/show-cookies">Show Cookies</a>
+      </nav>
+    </header>
+
+    <div class="card">
+      <h1>Remove a Cookie</h1>
+      
+      <div class="form-container">
+        <form method="POST" action="/remove-cookie">
+          <div class="form-group">
+            <label for="cookieName">Cookie Name to Remove</label>
+            <input type="text" id="cookieName" name="cookieName" required placeholder="Enter cookie name to delete..." />
+          </div>
+
+          <button type="submit" class="btn">Delete Cookie</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Floating broken hearts elements -->
+    <div class="floating-heart">💔</div>
+    <div class="floating-heart">💔</div>
+    <div class="floating-heart">💔</div>
+    <div class="floating-heart">💔</div>
+  </div>
+</body>
+</html>

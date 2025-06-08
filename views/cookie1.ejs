@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Info</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav>
+        <a href="/home">Home</a>
+        <a href="/cookie1" class="active">Cookie Info</a>
+        <a href="/add-cookie">Add Cookie</a>
+        <a href="/remove-cookie">Remove Cookie</a>
+        <a href="/remove-cookie-ajax">AJAX Remove</a>
+        <a href="/show-cookies">Show Cookies</a>
+      </nav>
+    </header>
+
+    <div class="card">
+      <h1>🍪 Cookie Information</h1>
+      
+      <div class="info-grid">
+        <div class="info-item">
+          <strong>Authentication Token</strong>
+          <div class="info-value"><%= token || 'Not Set' %></div>
+        </div>
+        
+        <div class="info-item">
+          <strong>Last Visit Timestamp</strong>
+          <div class="info-value">
+            <%= lastVisit ? new Date(parseInt(lastVisit)).toLocaleString() : 'First Visit' %>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <strong>Time Since Last Visit</strong>
+          <div class="info-value">
+            <%= timeSinceLastVisit %> seconds ago
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <a href="/cookie1" class="refresh-link">🔄 Refresh and Update Cookies</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
